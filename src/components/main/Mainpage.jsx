@@ -13,9 +13,9 @@ function Mainpage() {
   const [isPopup, setisPopup] = useState(false);
   const [width, setWidth] = useState({winWidth : window.innerWidth});
   const detectSize = () => {
-    setWidth(
+    setWidth({
       winWidth : window.innerWidth,
-    )
+    })
   }
   useEffect (() => {
     window.addEventListener('resize', detectSize)
