@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 import Nav from "../Navbar/Nav";
 import FormPage from "./FormPage";
 import { IoMdPlay } from "react-icons/io";
@@ -12,6 +12,17 @@ import Slider from "./Slider";
 function Mainpage() {
   const [isPopup, setisPopup] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
+  const detectSize = () => {
+    setWidth(
+      winWidth : window.innerWidth
+    )
+  }
+  useEffect (() => {
+    window.addEventListener('resize', detectSize)
+    return () =>{
+      window.removeEventListener('resize', detectSize)
+    }
+  },[width]) 
   const breakpoint = 800;
 
   const inClick = () => {
@@ -158,7 +169,7 @@ function Mainpage() {
                 </div>
 
                 {/* inner review first  */}
-                {width > breakpoint ? <Mainfcard /> : <Slider />}
+                {window.innerWidth > breakpoint ? <Mainfcard /> : <Slider />}
               </div>
               {/* review2 end */}
               <div className="px-12 pt-56 mob:pt-0 tab:pt-0">
