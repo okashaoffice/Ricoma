@@ -11,10 +11,10 @@ import Slider from "./Slider";
 
 function Mainpage() {
   const [isPopup, setisPopup] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState({winWidth : window.innerWidth});
   const detectSize = () => {
     setWidth(
-      winWidth : window.innerWidth
+      winWidth : window.innerWidth,
     )
   }
   useEffect (() => {
