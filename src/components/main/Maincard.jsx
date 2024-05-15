@@ -3,7 +3,7 @@ import { IoStar } from "react-icons/io5";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import "@splidejs/splide/css";
 import Slider from "./Slider";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Slideimg = [
   { img: "images/mainimg/mach3.png", hiding: "TC-1501", amm: "15 needles" },
@@ -11,8 +11,20 @@ const Slideimg = [
   { img: "images/mainimg/machone.png", hiding: "MT-1501", amm: "15 needles" },
 ];
 function Maincard() {
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState({winWidth : window.innerWidth});
   const breakpoint = 800;
+  const detectSize = () => {
+  setWidth({
+    winWidth : window.innerWidth,
+  })
+  }
+  useEffect (() => {
+    window.addEventListener('resize', detectSize)
+    return () =>{
+      window.removeEventListener('resize', detectSize)
+    }
+  },[width]) 
+  
   return (
     <div>
       <div>
@@ -65,7 +77,7 @@ function Maincard() {
               </div>
 
               {/* iNNER cARD 2 */}
-              {width > breakpoint ? (
+              {window.innerWidth > breakpoint ? (
                 <div>
                   <div className="px-12 absolute w-full -bottom-[6.5rem] ">
                     <div className="bg-[#FFFFFF] p-4 mt-8 relative shadow-sm shadow-slate-300">
